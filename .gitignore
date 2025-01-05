@@ -1,0 +1,4 @@
+# Ignore build, log, and install directories
+build/
+log/
+install/

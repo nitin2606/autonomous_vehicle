@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>monocular_vslam_ros2</name>
+  <version>0.1.0</version>
+  <description>Monocular VSLAM using ORB-SLAM3 and ROS2 Humble</description>
+  <maintainer email="mahachanakya2003@gmail.com">Uduta Sri Maha Chanakya Chandra</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>image_transport</exec_depend>
+</package>

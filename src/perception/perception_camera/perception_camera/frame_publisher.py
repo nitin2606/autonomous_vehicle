@@ -16,7 +16,7 @@ class FramePublisher(Node):
         for i in range(camera_count):  
             camera_id = f'cam_{i}'
             self.declare_parameter(f'{camera_id}.camera_index', 0)
-            self.declare_parameter(f'{camera_id}.video_file', '/home/knight/autonomous_vehicle_ws/src/inference_files/vid1.mp4')
+            self.declare_parameter(f'{camera_id}.video_file', '')
             self.declare_parameter(f'{camera_id}.video_url', '')
 
         

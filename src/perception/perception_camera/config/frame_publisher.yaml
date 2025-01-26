@@ -1,0 +1,7 @@
+perception_camera:
+  ros__parameters:
+    camera_count: 1
+    cam_0:
+      camera_index: 5
+      video_file: "/home/knight/autonomous_vehicle_ws/src/inference_files/vid1.mp4"
+      video_url: ''

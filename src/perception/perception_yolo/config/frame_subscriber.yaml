@@ -1,0 +1,9 @@
+frame_subscriber:
+  ros__parameters:
+    camera_count: 1
+    cam_0:
+      topic: "cam_0/frame"
+      model_path: "/home/knight/autonomous_vehicle_ws/src/model_files/last_single_class_new.pt"
+
+
+    

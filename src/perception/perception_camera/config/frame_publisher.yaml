@@ -3,5 +3,6 @@ frame_publisher:
     camera_count: 1
     cam_0:
       camera_index: 0
+      frame_rate: 10
       video_file: "/home/knight/autonomous_vehicle_ws/src/inference_files/vid1.mp4"
       video_url: ''

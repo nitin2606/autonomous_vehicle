@@ -14,24 +14,26 @@ class FramePublisher(Node):
         camera_count = self.get_parameter('camera_count').get_parameter_value().integer_value
 
         for i in range(camera_count):  
-            camera_id = f'cam_{i}'
-            self.declare_parameter(f'{camera_id}.camera_index', 0)
-            self.declare_parameter(f'{camera_id}.video_file', '')
-            self.declare_parameter(f'{camera_id}.video_url', '')
+            self.camera_id = f'cam_{i}'
+            self.declare_parameter(f'{self.camera_id}.camera_index', 0)
+            self.declare_parameter(f'{self.camera_id}.frame_rate', 20)
+            self.declare_parameter(f'{self.camera_id}.video_file', '')
+            self.declare_parameter(f'{self.camera_id}.video_url', '')
 
         
         for i in range(camera_count):
-            camera_id = f'cam_{i}'
-            camera_index = self.get_parameter(f'{camera_id}.camera_index').get_parameter_value().integer_value
-            video_file = self.get_parameter(f'{camera_id}.video_file').get_parameter_value().string_value
-            video_url = self.get_parameter(f'{camera_id}.video_url').get_parameter_value().string_value
+            self.camera_id = f'cam_{i}'
+            self.camera_index = self.get_parameter(f'{self.camera_id}.camera_index').get_parameter_value().integer_value
+            self.frame_rate = self.get_parameter(f'{self.camera_id}.frame_rate').get_parameter_value().integer_value
+            self.video_file = self.get_parameter(f'{self.camera_id}.video_file').get_parameter_value().string_value
+            self.video_url = self.get_parameter(f'{self.camera_id}.video_url').get_parameter_value().string_value
 
-            self.get_logger().info(f"Camera_Id: {camera_id}, Camera_Index: {camera_index}, Video_File: {video_file}, Video_URL: {video_url}")
+            self.get_logger().info(f"Camera_Id: {self.camera_id}, Camera_Index: {self.camera_index}, Frame_Rate: {self.frame_rate}, Video_File: {self.video_file}, Video_URL: {self.video_url}")
 
-            camera = Camera(self, camera_id, camera_index, video_file, video_url)
+            camera = Camera(self, self.camera_id, self.camera_index, self.video_file, self.video_url)
             self.cameras.append(camera)
 
-        self.timer = self.create_timer(1/30, self.timer_callback)
+        self.timer = self.create_timer(1/self.frame_rate, self.timer_callback)
 
     def timer_callback(self):
         for camera in self.cameras:
@@ -52,9 +54,7 @@ def main(args=None):
     finally:
         frame_publisher.destroy_node()
         rclpy.shutdown()
-    # rclpy.spin(frame_publisher)
-    # frame_publisher.destroy_node()
-    # rclpy.shutdown()
+  
 
 if __name__ == '__main__':
     main()
